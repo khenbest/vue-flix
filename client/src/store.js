@@ -11,14 +11,20 @@ let movieApi = Axios.create({
 
 export default new Vuex.Store({
   state: {
-
+  movies: []
   },
   mutations: {
-
+  setMovies(state, data){
+  state.movies = data
+  }
   },
   actions: {
-    getTitle(){
-     
+    search({commit, dispatch, state}, searchTerm){
+     movieApi.get(searchTerm)
+     .then(res => {   // console.log response to see what you need.
+       commit('setMovies', res.data.results) //commiting new data to setMovies mutation.
+       console.log(res.data.results)
+     })
     }
 
   }
