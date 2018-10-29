@@ -12,6 +12,14 @@
 
 <Results> :movieData="movies"</Results>
 
+<div v-for="movie in movies" :key="movie._id">
+
+<h1>{{movie.title}}</h1>
+<img :src="'https://image.tmdb.org/t/p/w200'+movie.poster_path" alt="">
+<p>{{movie.overview}}</p>
+
+
+</div>
 
 
  </div>
@@ -19,37 +27,33 @@
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-import Results from '@/components/Results.vue'
+import HelloWorld from "@/components/HelloWorld.vue";
+import Results from "@/components/Results.vue";
 
 export default {
-  name: 'home',
+  name: "home",
   components: {
     HelloWorld,
     Results,
-    data(){
-      return{
+    data() {
+      return {
         movieName: ""
-      }
+      };
     }
   },
-computed:{ // always watching for your mutations in the store.
-movies(){
-  return this.$store.state.movies;
-}
-},
+  computed: {
+    // always watching for your mutations in the store.
+    movies() {
+      return this.$store.state.movies;
+    }
+  },
 
-  methods:{
-  search(){      // action         // refers to movieName in v model & empty string in data
-    this.$store.dispatch("search", this.movieName) 
+  methods: {
+    search() {
+      // action         // refers to movieName in v model & empty string in data
+      this.$store.dispatch("search", this.movieName);
+    }
   }
-  
-
-  }
-
-
-
-
-}
+};
 </script>
 
