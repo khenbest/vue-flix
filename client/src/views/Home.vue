@@ -4,22 +4,14 @@
 <!-- <HelloWorld msg="Welcome to vue flix!"/> -->
 
             <!-- this will search when form is submitted, using search method -->
-<form @submit.prevent="search">
-<input type="text" v-model="movieName" placeholder="Search movie">
-<h3>Searching for {{movieName}}</h3>
+<form @submit.prevent="search" class="mb-5">
+<input  type="text" v-model="movieName" placeholder="Search movie">
+
   </form>
 
 
 <Results> :movieData="movies"</Results>
 
-<div v-for="movie in movies" :key="movie._id">
-
-<h1>{{movie.title}}</h1>
-<img :src="'https://image.tmdb.org/t/p/w200'+movie.poster_path" alt="">
-<p>{{movie.overview}}</p>
-
-
-</div>
 
 
  </div>
