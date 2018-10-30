@@ -11,8 +11,10 @@
 
   </form>
 
-
+<!-- this is taking data from movies in computed and binding them to movie data in results, results will then create a prop called movieData to recieve it, this is a way of transferring data from parent component to child -->
 <Results :movieData="movies" v-on:viewDetails="setActiveMovie" class="col"/>
+
+<!-- this is taking the data from data.activeMovie which is just an empty object-->
     <Details :movieDetails="activeMovie" class="col"/>
 
 
@@ -26,18 +28,16 @@
 // @ is an alias to /src
 import HelloWorld from "@/components/HelloWorld.vue";
 import Results from "@/components/Results.vue";
+import Details from "@/components/Details.vue";
 
 export default {
   name: "home",
-  components: {
-    HelloWorld,
-    Results,
-    data() {
-      return {
-        movieName: "",
-        activeMovie: {}
-      };
-    }
+
+  data() {
+    return {
+      movieName: "",
+      activeMovie: {}
+    };
   },
   computed: {
     // always watching for your mutations in the store.
@@ -54,7 +54,14 @@ export default {
 
     setActiveMovie(movie) {
       this.activeMovie = movie;
+      console.log(movie);
     }
+  },
+
+  components: {
+    HelloWorld,
+    Results,
+    Details
   }
 };
 </script>
