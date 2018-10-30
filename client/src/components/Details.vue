@@ -14,6 +14,7 @@ export default {
   data() {
     return {};
   },
+  // this is recieving the movieDetails data from home.vue
   props: ["movieDetails"]
 };
 </script>
