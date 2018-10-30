@@ -1,12 +1,18 @@
 <template>
+<v-app>
+  <v-content>
     <div class="results">
  
     <div v-for="movie in movies" class="result" :key="movie.id">
        <img @click="viewDetails(movie)" :src="'https://image.tmdb.org/t/p/w200'+movie.poster_path" alt="">
-        <h4>{{movie.title}}</h4>
+        <h1>{{movie.title}}</h1>
+
+        
 
     </div>
 </div>
+</v-content>
+</v-app>
 </template>
 
 <script>

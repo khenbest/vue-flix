@@ -1,4 +1,6 @@
 <template>
+<v-app>
+  <v-content>
   <div class="home">
     <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
 <!-- <HelloWorld msg="Welcome to vue flix!"/> -->
@@ -10,11 +12,14 @@
   </form>
 
 
-<Results> :movieData="movies"</Results>
+<Results :movieData="movies" v-on:viewDetails="setActiveMovie" class="col"/>
+    <Details :movieDetails="activeMovie" class="col"/>
 
 
 
  </div>
+ </v-content>
+ </v-app>
 </template>
 
 <script>
@@ -29,7 +34,8 @@ export default {
     Results,
     data() {
       return {
-        movieName: ""
+        movieName: "",
+        activeMovie: {}
       };
     }
   },
@@ -44,6 +50,10 @@ export default {
     search() {
       // action         // refers to movieName in v model & empty string in data
       this.$store.dispatch("search", this.movieName);
+    },
+
+    setActiveMovie(movie) {
+      this.activeMovie = movie;
     }
   }
 };
